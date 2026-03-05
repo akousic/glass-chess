@@ -52,6 +52,26 @@ npm run build
 npm run typecheck
 ```
 
+## Screenshots
+
+Add image files under `docs/screenshots/` and reference them here.
+
+### Glass Theme
+
+![Glass theme](docs/screenshots/glass-theme.png)
+
+### Marble Theme
+
+![Marble theme](docs/screenshots/marble-theme.png)
+
+### Legal Move Highlights
+
+![Legal move highlights](docs/screenshots/move-highlights.png)
+
+## Camera Preview
+
+![Camera orbit demo](docs/media/camera-orbit.gif)
+
 ## How to Play
 
 - Click a piece to select it.
@@ -69,3 +89,14 @@ The AI uses legal move generation plus a shallow minimax search with alpha-beta 
 
 - The build uses `esbuild` for the Electron main process, preload script, and renderer bundle.
 - Static assets for the renderer are copied into `dist/` before Electron launches.
+- Suggested README asset layout:
+
+```text
+docs/
+  screenshots/
+    glass-theme.png
+    marble-theme.png
+    move-highlights.png
+  media/
+    camera-orbit.gif
+```
