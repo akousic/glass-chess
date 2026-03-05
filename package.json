@@ -1,0 +1,33 @@
+{
+  "name": "glass-chess",
+  "version": "1.0.0",
+  "description": "Electron desktop app for a playable 3D chess game with glass and marble themes.",
+  "main": "dist/main/main.js",
+  "scripts": {
+    "clean": "shx rm -rf dist",
+    "prepare:assets": "shx mkdir -p dist/renderer && shx cp src/renderer/index.html dist/renderer/index.html && shx cp src/renderer/styles.css dist/renderer/styles.css",
+    "build:main": "esbuild src/main/main.ts --bundle --platform=node --format=cjs --outfile=dist/main/main.js --external:electron",
+    "build:preload": "esbuild src/main/preload.ts --bundle --platform=node --format=cjs --outfile=dist/preload/preload.js --external:electron",
+    "build:renderer": "esbuild src/renderer/index.ts --bundle --platform=browser --format=esm --outfile=dist/renderer/index.js",
+    "build": "run-s clean prepare:assets build:main build:preload build:renderer",
+    "watch:main": "esbuild src/main/main.ts --bundle --platform=node --format=cjs --outfile=dist/main/main.js --external:electron --watch",
+    "watch:preload": "esbuild src/main/preload.ts --bundle --platform=node --format=cjs --outfile=dist/preload/preload.js --external:electron --watch",
+    "watch:renderer": "esbuild src/renderer/index.ts --bundle --platform=browser --format=esm --outfile=dist/renderer/index.js --watch",
+    "start:electron": "wait-on dist/main/main.js dist/preload/preload.js dist/renderer/index.js dist/renderer/index.html && electron .",
+    "start:dev": "run-p watch:main watch:preload watch:renderer start:electron",
+    "start": "run-s clean prepare:assets start:dev",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "electron": "^37.2.0",
+    "three": "^0.179.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "esbuild": "^0.25.9",
+    "npm-run-all": "^4.1.5",
+    "shx": "^0.4.0",
+    "typescript": "^5.9.2",
+    "wait-on": "^8.0.5"
+  }
+}

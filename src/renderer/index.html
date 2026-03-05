@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Glass Chess</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <main class="main-layout">
+        <section class="board-panel">
+          <div class="board-header">
+            <div>
+              <p class="eyebrow">Electron 3D Chess</p>
+              <h1>Glass Chess</h1>
+            </div>
+            <div id="status-text" class="status-pill">White to move.</div>
+          </div>
+          <div id="board-root" class="board-root"></div>
+          <div id="promotion-dialog" class="promotion-dialog" hidden>
+            <span>Choose promotion</span>
+            <div class="promotion-buttons">
+              <button data-promotion="q">Queen</button>
+              <button data-promotion="r">Rook</button>
+              <button data-promotion="b">Bishop</button>
+              <button data-promotion="n">Knight</button>
+            </div>
+          </div>
+        </section>
+
+        <aside class="sidebar">
+          <section class="control-card">
+            <h2>Controls</h2>
+            <div class="button-grid">
+              <button id="new-game-button">New Game</button>
+              <button id="undo-button">Undo Last Move</button>
+              <button id="theme-button">Theme: Glass</button>
+              <button id="mode-button">Mode: Human vs AI</button>
+            </div>
+            <p class="hint">Click a piece, then a highlighted square. Drag to orbit. Scroll to zoom.</p>
+          </section>
+
+          <section class="move-card">
+            <div class="move-card-header">
+              <h2>Move List</h2>
+              <span>Algebraic notation</span>
+            </div>
+            <ol id="move-list" class="move-list"></ol>
+          </section>
+
+          <footer class="footer">
+            <span id="footer-version"></span>
+          </footer>
+        </aside>
+      </main>
+    </div>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
